@@ -7,8 +7,11 @@ class Config(object):
     TESTING = False
     CSRT_ENABLED = True
     SECRTE_KEY = ''
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or "postgresql://localhost/wordcount_dev"
- 
+    SQLALCHEMY_TRACK_MODIFICATION = False
+    SQLALCHEMY_USER = 'postgres'
+    SQLALCHEMY_PASSWORD = 'tang'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or "postgresql://%s:%s@localhost/wordcount_dev" % (SQLALCHEMY_USER,SQLALCHEMY_PASSWORD)
+    
 class ProductionConfig(Config):
     pass
 
